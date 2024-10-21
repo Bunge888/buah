@@ -30,6 +30,25 @@
   </div>
 </form>
 
+<script type="module">
+    import { tambahbuah } from "./main.js";
+
+    $(document).ready(async function() {
+
+
+      //klik tombol tambah
+      $("#tombolsimpan").click(async function(event) {
+        event.preventDefault()
+        //ambil data dari formulir 
+        let nama = $("#inputnama").val()
+        let warna = $("#inputwarna").val()
+        let harga= $("#inputHarga").val()
+
+        await tambahbuah(nama, warna, harga)
+        window.location.href = "index.html"
+      })
+    })
+  </script>
 </body>
 
 </html>
