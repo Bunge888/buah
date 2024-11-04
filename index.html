@@ -32,28 +32,40 @@
   
   <script type="module">
     
-    import{ ambilDaftarbuah } from './main.js';
+    import{ ambilDaftarbuah,hapusbuah } from './main.js';
     
     $(document).ready(async function() {
       let elemenDaftarbuah = $("#daftar-buah > tbody");
       let daftarbuah = await ambilDaftarbuah();
       
       daftarbuah.forEach((data) => {
-        elemenDaftarbuah.append(
-      "<tr>" +
-      "<td>" + "</td>" +
-      "<td>" + data.nama +"</td>" +
-      "<td>" + data.warna+ "</td>" +
-        "<td>" + data.harga+ "</td>" +
-      "<td>" + "</td>" +
-      "</tr>"
-          )
-      })
+            elemenDaftarbuah.append(
+              "<tr>" +
+               "<td>" + "</td>" +
+               "<td>" + data.nama + "</td>" +
+               "<td>" + data.warna + "</td>" +
+               "<td>" + data.harga + "</td>" +
+               
+               "<td>" + "<a href='#' class='me-2 link-ubah' data='" + data.id + "'>ubah</a><button class='btn btn-danger tombol-hapus' data='" +data.id + "'>hapus</button> "  + "</td>" +
+              "</tr>"
+              )
+          })
+          
+           $('.tombol-hapus').click(async function() {
+             if (confirm("Apakah benar mau menghapus?")) {
+               await hapusbuah($(this). attr('data'))
+            location.reload() 
+             }
+          })
+          
+          })
+          
       
-    })
-    
-  </script>
-  
+        
+      </script><div></div>
+      
+    </tbody>
+  </table>
 </body>
 
 </html>
