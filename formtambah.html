@@ -39,6 +39,9 @@
       //klik tombol tambah
       $("#tombolsimpan").click(async function(event) {
         event.preventDefault()
+        
+        //membuat tombol ini jadi disabled
+        $ (this).attr('disabled','disabled')
         //ambil data dari formulir 
         let nama = $("#inputnama").val()
         let warna = $("#inputwarna").val()
