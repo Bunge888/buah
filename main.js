@@ -64,3 +64,17 @@ export async function ambilDaftarbuah() {
 export async function hapusbuah(id) {
   await deleteDoc(doc(basisdata, "buah", id))
 }
+
+export async function ubahbuah(id, namabaru, warnabaru, hargabaru) {
+  await updateDoc(
+    doc (basisdata, "buah", id),
+    { nama: namabaru, warna: warnabaru, harga: hargabaru }
+  )
+}
+
+export async function ambilbuah(id) {
+  const refDokumen = await doc(basisdata, "buah", id)
+  const snapshotDokumen = await getDoc(refDokumen)
+
+  return await snapshotDokumen.data()
+}
